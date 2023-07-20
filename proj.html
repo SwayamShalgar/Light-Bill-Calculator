@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="hero-text">
+
+        <h1>MSEB Bill Calculator</h1>
+
+    </div>
+    <br>
+    <br>
+
+    <!-- basic information filling ---------------------------- -->
+
+    <div class="base-fill">
+
+
+        <div class="bill">
+            <label for="billunit">Billing Unit&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp; </label>
+            <input type="text" id="billunit" required="required">
+
+            <div class="address">
+                <!-- <label for="address">Address : &nbsp; &nbsp; &nbsp; &nbsp;</label> -->
+                <div class="container">
+                    <div class="inputbox">
+
+                        <input name="address" id="address" cols="20" rows="3" required="required">
+                        <span>Address...</span>
+                        <i></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="msg1" id="message1"></div>
+            <br>
+            <div class="customer">
+                <label for="customerno">Customer No : &nbsp;</label>
+
+                <input type="number" id="customerno" value="0">
+
+            </div>
+
+
+            <br>
+
+            <label for="name">Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : &nbsp; </label>
+
+            <input type="text" id="name"><br>
+
+        </div>
+
+        <br>
+        <div class="msg" id="message"></div>
+
+    </div>
+
+    <!-- basic filling ends----------------------------------- -->
+
+
+    <br>
+    <br>
+
+    &nbsp;
+
+    <!-- <label for="meterno">&nbsp; &nbsp; Meter No &nbsp; &nbsp; &nbsp; &nbsp; </label> -->
+    &nbsp;
+    <!-- <label for="currentread">&nbsp; &nbsp;&nbsp; &nbsp; Current Reading &nbsp; &nbsp; &nbsp; </label> -->
+    &nbsp;
+
+    <!-- <label for="oldreading">&nbsp; &nbsp; &nbsp; &nbsp;Old Reading &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
+    &nbsp;</label>
+    <!-- <label for="tot">&nbsp; &nbsp;&nbsp; &nbsp; Total &nbsp; &nbsp; &nbsp; </label><br> -->
+
+
+
+    <div class="bars">
+
+        <div class="norm-bar">
+
+            <input class='sample' type="text" id="meterno" placeholder="Meter No.--">
+            <input class='sample' type="text" id="currentread" placeholder="Current Reading--">
+            <input class='sample' type="text" id="oldreading" placeholder="Old Reading--" >
+            <input class='sample' type="text" id="tot" placeholder="Total" -->
+
+        </div>
+
+
+        <div class="date-bars">
+
+            <label for="billdate">&nbsp;&nbsp;&nbsp;Bill Date</label>
+            <input class="sample" type="date" id="billdate">
+            <label for="duedate">&nbsp;&nbsp;&nbsp;Due Date</label>
+            <input class="sample" type="date" id="duedate" value="2023-08-19">
+
+        </div>
+
+    </div>
+
+
+
+
+    </div>
+
+    <br>
+    <br>
+
+    <div class="date">
+        <label for="paidindate1">If Bill Paid Before This Date Bill Is : &nbsp; </label>
+        <input type="date" id="paidindate1" value="2023-08-19">
+        <label for="amount1">&nbsp; Amount: </label>
+        <input type="text" name="amount1" id="amount1" value="0"><br><br>
+
+        <label for="paidindate2">If Bill Paid After This Date Bill Is : &nbsp; </label>
+        &nbsp;
+        <input type="date" id="paidindate2" value="2023-08-19">
+
+        <label for="amount2">&nbsp; Amount: </label>
+        <input type="text" name="amount2" id="amount2" value="0"><br><br>
+
+    </div><br><br>
+
+    <div class="shape">
+
+        <label for="fcharges">Fixed Charges &nbsp;&nbsp;&nbsp;:</label>
+        <input type="text" id="fcharges" value="0"><br>
+        <br>
+
+        <label for="echarges">Energy Charges :</label>
+        <input type="text" id="echarges" value="0"><br>
+        <br>
+
+        <label for="cbill">Current Bill &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</label>
+        <input type="text" id="cbill" value="0"><br>
+        <br>
+
+        <label for="dbill">Due Bill
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</label>
+        <input type="text" id="dbill" value="0"><br>
+
+
+    </div>
+    <br><br><br><br>
+    <div class="total">
+        <h3>
+            <center><label for="tbill"> &nbsp;Total </label><br>
+        </h3>
+        </center>
+
+        <center><input type="text" class="btn1" id="tbill"><br>
+        </center> <br>
+    </div>
+    <center> <button class="btn" onclick="check()">Genrate Bill</button>
+    </center>
+
+    <style>
+        body{
+            color: black;
+            background-image: url(css/bg.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .sample {
+            padding: 5px 5px 5px 5px;
+            width: 100px;
+        }
+
+        .btn {
+            padding: 10px;
+        }
+
+        .btn1 {
+            padding: 5px;
+            width: 70px;
+        }
+
+        .msg {
+            margin: 5px 110px;
+            color: red;
+        }
+
+        .msg1 {
+            margin: 5px 110px;
+            color: red;
+        }
+    </style>
+
+    <script>
+
+        function generate() {
+            // document.getElementById("currentread").value = document.getElementById("bliiunit").value
+
+            let crt = parseInt(document.getElementById("currentread").value)
+            let old = parseInt(document.getElementById("oldreading").value)
+
+            let tot = crt + old
+
+            document.getElementById("tot").value = tot
+
+
+            let amt = 0
+            let ut = 0
+
+
+            let a = document.getElementById("billdate").value
+            let paid1 = document.getElementById("paidindate1").value
+
+            if (tot < 50) {
+                amt = 30
+                ut = 30
+            }
+            else if (tot > 50 && tot < 100) {
+                amt = 50
+                ut = 35
+            }
+            else if (tot > 100 && tot < 150) {
+                amt = 100
+                ut = 40
+            }
+            else if (tot > 150) {
+                amt = 125
+                ut = 50
+            }
+
+            if (a < paid1) {
+                amt = 0
+                document.getElementById("amount1").value = tot * ut
+            }
+
+            if (a > paid1) {
+                document.getElementById("amount2").value = amt + (tot * ut)
+            }
+
+            let c = 0
+            if (tot < 100) {
+                let a = 4.47
+                let v = parseFloat(a) * tot
+                c = v
+                document.getElementById("fcharges").value = parseInt(c)
+            }
+            if (tot > 100 && tot < 300) {
+                let a = 9.64
+                let v = parseFloat(a) * tot
+                c = v
+                document.getElementById("fcharges").value = parseInt(c)
+            }
+            if (tot > 300 && tot < 500) {
+                let a = 13.67
+                let v = parseFloat(a) * tot
+                c = v
+                document.getElementById("fcharges").value = parseInt(c)
+            }
+            if (tot > 500) {
+                let a = 15.57
+                let v = parseFloat(a) * tot
+                c = v
+                document.getElementById("fcharges").value = parseInt(c)
+            }
+
+            let d = 0
+            if (tot < 100) {
+                let b = 18
+                d = parseFloat(b)
+                document.getElementById("echarges").value = parseInt(d)
+            }
+            if (tot > 100 && tot < 250) {
+                let b = 25
+                d = parseFloat(b)
+                document.getElementById("echarges").value = parseInt(d)
+            }
+            if (tot > 250 && tot < 500) {
+                let b = 37
+                d = parseFloat(b)
+                document.getElementById("echarges").value = parseInt(d)
+            }
+            if (tot > 500) {
+                let b = 50
+                d = parseFloat(b)
+                document.getElementById("echarges").value = parseInt(d)
+            }
+
+            let e = parseInt(document.getElementById("amount1").value)
+            if (e != 0) {
+                e = parseInt(document.getElementById("amount1").value)
+                document.getElementById("cbill").value = parseInt(document.getElementById("amount1").value)
+            }
+            if (e == 0) {
+                e = parseInt(document.getElementById("amount2").value)-amt
+                document.getElementById("cbill").value = parseInt(document.getElementById("amount2").value) - amt
+            }
+
+            let f = amt
+            document.getElementById("dbill").value = amt
+            document.getElementById("tbill").value = c + d + e + f
+
+            openPopup()
+        }
+
+        function openPopup() {
+
+            let na = document.getElementById("name").value
+            let custno = document.getElementById("customerno").value
+            let addrs = document.getElementById("address").value
+
+            let billunit = document.getElementById("billunit").value
+            let crntread = document.getElementById("currentread").value
+            let billdate = document.getElementById("billdate").value
+            let fixcharge = document.getElementById("fcharges").value
+            let energycharge = document.getElementById("echarges").value
+            let crbill = document.getElementById("cbill").value
+            let duebill = document.getElementById("dbill").value
+
+            let total = document.getElementById("tbill").value
+
+            var popupContent = "<center><h1>Bill Reciept</h1></center>" +
+                "<p>Name                      : " + na + "</p>" +
+                "<p>Customer No.              : " + custno + "</p>" +
+                "<p>Address                   : " + addrs + "</p>" +
+                "<p>Billing Unit              : " + billunit + "</p>" +
+                "<p>Current Reading           : " + crntread + "</p>" +
+                "<p>Bill Date                 : " + billdate + "</p>" + "<br>" + "<hr>";
+
+
+            var content =
+                
+                "<p>Fixed Charges             : " + fixcharge + "</p>" +
+                "<p>Energy Charges            : " + energycharge + "</p>" + 
+                "<p>Current Bill             : " + crbill + "</p>" +
+                "<p>Due Bill             : " + duebill + "</p>" + "<br>" + "<hr>"
+
+            var fortotal = "<br>" +
+                "<h4>Total :  <h4>" + total;
+
+            var popupOptions = 'width=600,height=600';
+
+            // Open the pop-up window
+            var popup = window.open('', '_blank', popupOptions);
+            popup.document.write(popupContent + "<br>" + content + fortotal);
+        }
+
+
+        function checkInput() {
+            let inputElement = document.getElementById("name");
+            let inputValue = inputElement.value;
+
+            let numberValue = parseFloat(inputValue);
+
+
+            if (!isNaN(numberValue)) {
+                document.getElementById("message").textContent = "Input is a number!";
+            } else {
+                generate()
+            }
+        }
+
+        function check() {
+            let inputElement1 = document.getElementById("billunit");
+            let inputElement2 = document.getElementById("currentread");
+            let value1 = inputElement1.value;
+            let value2 = inputElement2.value;
+
+            if (value1 != value2) {
+                document.getElementById("message1").textContent = "Billing Unit and Current unit Should be same!";
+            } else {
+                checkInput();
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
